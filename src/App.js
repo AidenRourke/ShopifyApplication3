@@ -6,7 +6,6 @@ import ItemList from "./ItemList";
 import Search from "./svg/search"
 
 const Header = styled.div`
-  margin-top: 10px;
   background: linear-gradient(to left, #4B9662, #2B5791);
   height: 100px;
   width: 100%;
@@ -114,22 +113,20 @@ class App extends Component {
         const {filteredData, data} = this.state;
         const favourites = data.filter(item => item.favorited);
         return (
-            <div style={{height: "100%"}}>
+            <div style={{height: "100%", display: "flex", flexFlow: "column"}}>
                 <Header>Toronto Waste Lookup</Header>
-                <div style={{display: "flex"}}>
+                <div style={{display: "flex", flex: "0 0 auto"}}>
                     <Input type="text" value={this.state.search} onChange={e => this.setState({search: e.target.value})}
                            onKeyPress={this.handleKeyPress}/>
                     <Button onClick={this.filterData}><Search/></Button>
                 </div>
-                <div style={{display: "flex", flexFlow: "column", height: "100%"}}>
-                    <ItemList setFavorite={this.setFavorite} items={filteredData}/>
-                    {
-                        favourites.length > 0 && <Favorites>
-                            <FavoritesHeader>Favourites</FavoritesHeader>
-                            <ItemList setFavorite={this.setFavorite} items={favourites}/>
-                        </Favorites>
-                    }
-                </div>
+                <ItemList setFavorite={this.setFavorite} items={filteredData}/>
+                {
+                    favourites.length > 0 && <Favorites>
+                        <FavoritesHeader>Favourites</FavoritesHeader>
+                        <ItemList setFavorite={this.setFavorite} items={favourites}/>
+                    </Favorites>
+                }
             </div>
         );
     };
