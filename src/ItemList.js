@@ -13,6 +13,7 @@ const SectionContainer = styled.div`
   padding: 10px;
   ul {
     margin: -10px 0;
+    padding: 0;
   }
   li {
     margin: 10px 0;
@@ -28,7 +29,7 @@ const Icon = styled.span`
   svg {
     fill: ${props => props.favorited ? "#4B9662" : "#AAAAAA"};
     &:hover {
-      fill: #4B9662;
+      fill: ${props => props.favorited ? "#AAAAAA" : "#4B9662"};
     }
   }
 `;

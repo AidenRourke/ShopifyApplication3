@@ -25,6 +25,7 @@ const FavoritesHeader = styled.div`
 `;
 
 const Favorites = styled.div`
+  margin-top: 10px;
   background-color: #F8FEFA;
   flex: 1 1 auto;
 `;
@@ -37,6 +38,9 @@ const Input = styled.input`
   border-radius: 3px;
   border: 1px solid gray;
   padding: 0 10px;
+  :focus{
+    outline: none;
+  }
 `;
 
 const Button = styled.span`
@@ -51,7 +55,7 @@ const Button = styled.span`
   cursor: pointer;
   transform: scaleX(-1);
   border: 1px solid transparent;
-  &:hover{
+  :hover{
     opacity: 0.9;
   }
 `;
