@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import styled from "styled-components";
 
-import starIcon from "./svg/star.svg"
+import Star from "./svg/star"
 
 const Section = styled.div`
   width: 50%;
@@ -12,18 +12,25 @@ const Section = styled.div`
 const SectionContainer = styled.div`
   padding: 10px;
   ul {
-    margin: 0;
+    margin: -10px 0;
+  }
+  li {
+    margin: 10px 0;
   }
 `;
 
-const IconContainer = styled.div`
-  display: inline-block;
-  margin-right: 10px;
-`;
-
-const Icon = styled.img`
+const Icon = styled.span`
   height: 15px;
   width: 15px;
+  display: inline-block;
+  margin-right: 10px;
+  cursor: pointer;
+  svg {
+    fill: ${props => props.favorited ? "#4B9662" : "#AAAAAA"};
+    &:hover {
+      fill: #4B9662;
+    }
+  }
 `;
 
 export default class ItemList extends Component {
@@ -36,14 +43,14 @@ export default class ItemList extends Component {
     };
 
     render() {
-        const {items} = this.props;
+        const {items, setFavorite} = this.props;
 
-        return <div>
+        return <div style={{flex: "0 1 auto"}}>
             {
-                items.map(item =>
-                    <SectionContainer>
+                items.map((item, i) =>
+                    <SectionContainer key={i}>
                         <Section>
-                            <IconContainer><Icon src={starIcon}/></IconContainer>
+                            <Icon favorited={!!item.favorited} onClick={() => setFavorite(item.id)}><Star/></Icon>
                             {item.title}
                         </Section>
                         <Section dangerouslySetInnerHTML={{__html: this.htmlDecode(item.body)}}/>
