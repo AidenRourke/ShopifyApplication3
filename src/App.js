@@ -5,6 +5,9 @@ import styled from "styled-components";
 import ItemList from "./ItemList";
 import Search from "./svg/search"
 
+import Button from "./components/Button"
+import Input from "./components/Input"
+
 const Header = styled.div`
   background: linear-gradient(to left, #4B9662, #2B5791);
   height: 100px;
@@ -29,37 +32,6 @@ const Favorites = styled.div`
   flex: 1 1 auto;
 `;
 
-const Input = styled.input`
-  flex: 1 1 auto;
-  height: 40px;
-  font-size: 16px;
-  margin: 10px;
-  border-radius: 3px;
-  border: 1px solid gray;
-  padding: 0 10px;
-  :focus{
-    outline: none;
-  }
-`;
-
-const Button = styled.span`
-  display: inline-block;
-  background-color: #4B9662;
-  box-shadow: 0 8px 6px -6px gray;
-  margin: 10px;
-  padding: 10px;
-  height: 20px;
-  width: 20px;
-  border-radius: 3px;
-  cursor: pointer;
-  transform: scaleX(-1);
-  border: 1px solid transparent;
-  :hover{
-    opacity: 0.9;
-  }
-`;
-
-
 class App extends Component {
     state = {
         data: [],
@@ -76,17 +48,10 @@ class App extends Component {
     }
 
     filterData = () => {
-        // Improve filtering
-
         const {search, data} = this.state;
-        const filteredData = [];
-
+        let filteredData = [];
         if (search.length > 0) {
-            data.map(item => {
-                if (item.keywords.includes(search)) {
-                    filteredData.push(item);
-                }
-            });
+            filteredData = data.filter(item => item.keywords.split(",").some(key => key.trim().includes(search)));
             this.setState({filteredData})
         } else {
             this.setState({filteredData})
@@ -124,7 +89,7 @@ class App extends Component {
                 {
                     favourites.length > 0 && <Favorites>
                         <FavoritesHeader>Favourites</FavoritesHeader>
-                        <ItemList setFavorite={this.setFavorite} items={favourites}/>
+                        <ItemList favourites={true} setFavorite={this.setFavorite} items={favourites}/>
                     </Favorites>
                 }
             </div>
