@@ -78,7 +78,7 @@ class App extends Component {
         const {filteredData, data} = this.state;
         const favourites = data.filter(item => item.favorited);
         return (
-            <div style={{height: "100%", display: "flex", flexFlow: "column"}}>
+            <div style={{height: "100%", display: "flex", flexFlow: "column", overflowX: "hidden"}}>
                 <Header>Toronto Waste Lookup</Header>
                 <div style={{display: "flex", flex: "0 0 auto", padding: "10px"}}>
                     <Input type="text"
