@@ -10,13 +10,22 @@ const Section = styled.div`
 `;
 
 const SectionContainer = styled.div`
-  padding: 10px;
+  padding: 20px;
+  p {
+    margin: 0;
+  }
   ul {
-    margin: -10px 0;
     padding: 0;
+    margin: -10px 0;
+    ul {
+      padding-left: 40px;
+    }
   }
   li {
     margin: 10px 0;
+  }
+  text {
+    padding-left: 40px;
   }
 `;
 
