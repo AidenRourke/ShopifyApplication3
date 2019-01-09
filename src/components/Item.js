@@ -10,11 +10,12 @@ const Section = styled.div`
 `;
 
 const SectionContainer = styled.div`
-  padding: 20px 40px 20px 40px;
+  padding: 20px 10px;
   p {
     margin: 0;
   }
   ul {
+    list-style-position: inside;
     padding: 0;
     margin: -10px 0;
     ul {
@@ -38,7 +39,7 @@ const Icon = styled.span`
   svg {
     fill: ${props => props.favorited ? "#4B9662" : "#AAAAAA"};
     &:hover {
-      fill: ${props => props.favorited ? "#AAAAAA" : "#4B9662"};
+      opacity: 0.8;
     }
   }
 `;

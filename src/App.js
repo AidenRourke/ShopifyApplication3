@@ -80,11 +80,11 @@ class App extends Component {
         return (
             <div style={{height: "100%", display: "flex", flexFlow: "column"}}>
                 <Header>Toronto Waste Lookup</Header>
-                <div style={{display: "flex", flex: "0 0 auto", padding: "20px 40px"}}>
+                <div style={{display: "flex", flex: "0 0 auto", padding: "10px"}}>
                     <Input type="text"
                            value={this.state.search}
                            onChange={e => this.setState({search: e.target.value})}
-                           style={{marginRight: "20px"}}
+                           style={{marginRight: "10px"}}
                            onKeyPress={this.handleKeyPress}/>
                     <Button onClick={this.filterData}><Search/></Button>
                 </div>

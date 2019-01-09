@@ -13,13 +13,14 @@ const StyledButton = styled.span`
   cursor: pointer;
   transform: scaleX(-1);
   border: 1px solid transparent;
+  flex: 0 0 auto;
   :hover{
-    opacity: 0.9;
+    opacity: 0.8;
   }
 `;
 
 const Button = (props) => {
     return <StyledButton {...props}/>
-}
+};
 
 export default Button;
