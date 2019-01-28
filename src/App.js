@@ -75,6 +75,7 @@ class App extends Component {
     };
 
     render() {
+
         const {filteredData, data} = this.state;
         const favourites = data.filter(item => item.favorited);
         return (
